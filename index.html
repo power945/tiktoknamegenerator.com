@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Name Generator</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
+    body {
+      display:flex;justify-content:center;align-items:center;
+      height:100vh;background:#111;color:#fff;
+      text-align:center;padding:20px;
+    }
+    .container {
+      max-width:400px;width:100%;
+      background:#1c1c1c;padding:30px;border-radius:15px;
+      box-shadow:0 0 20px #ff0050, 0 0 40px #00f2ea;
+    }
+    h1 {
+      font-size:24px;margin-bottom:15px;
+      color:#ff0050;text-shadow:0 0 5px #00f2ea;
+    }
+    input {
+      width:100%;padding:10px;margin:10px 0;
+      border:none;border-radius:8px;
+      outline:none;font-size:16px;
+    }
+    button {
+      padding:10px 20px;margin:10px;
+      border:none;border-radius:8px;
+      background:#ff0050;color:#fff;font-weight:bold;
+      cursor:pointer;transition:0.3s;
+    }
+    button:hover {background:#00f2ea;color:#000;}
+    .result {
+      margin-top:20px;font-size:18px;
+      font-weight:bold;color:#00f2ea;
+      min-height:40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TikTok Name Generator</h1>
+    <input type="text" id="keyword" placeholder="Enter a word (e.g. your name)">
+    <button onclick="generateName()">Generate</button>
+    <button onclick="generateName()">Refresh 🔄</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function generateName() {
+      const keyword = document.getElementById("keyword").value || "User";
+      const suffixes = ["123", "XoXo", "King", "Queen", "Pro", "Vibes", "2025", "TikTok", "Official", "Boss"];
+      const prefix = ["TheReal", "Its", "Iam", "Lil", "Big", "Mr", "Miss", "Glow"];
+      const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+      const randomPrefix = prefix[Math.floor(Math.random() * prefix.length)];
+      const nameOptions = [
+        `${randomPrefix}${keyword}${randomSuffix}`,
+        `${keyword}_${randomSuffix}`,
+        `${keyword}.${randomSuffix}`,
+        `${randomPrefix}_${keyword}`,
+      ];
+      const finalName = nameOptions[Math.floor(Math.random() * nameOptions.length)];
+      document.getElementById("result").textContent = finalName;
+    }
+  </script>
+</body>
+</html>
